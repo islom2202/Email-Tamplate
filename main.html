@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body style="margin: 0; font-family:Lato, Helvetica, Arial, sans-serif; line-height: 170%;">
+  <input placeholder="Full Name" style="margin: 20px;"></input>
+  <br><br><br><br>
+
+  <header style="padding-inline: 1vw;">
+    <div style="display: flex; align-items: center;">
+      <img src="https://islom2202.github.io/portfolio/assets/icons/meditate.png" style="width: 30px; height: 30px; margin-right: 10px;">
+      <p style="color: #093968;">Islomjon Saidaliev</p>
+    </div>
+    
+    <h1 style=" font-size: clamp(16px, 2vw, 20px);  line-height: 160%;">Bewerbung als Ausbildung Fachinformatiker (m/w/d) mit Schwerpunkt Anwendungsentwicklung</h1>
+
+    <div style="width: 25vw; height: 3px; background-color: #093968; border-radius: 50px; margin: 15px 0 40px 0;"></div>
+  </header>
+  <main style="color:#666666; font-size: clamp(16px, 4vw, 18px); padding-inline: 1vw; ">
+    Sehr geehrte<span class="adjEnd"></span> <span class="name">Damen und Herren</span>, <br><br>
+    ich bewerbe mich hiermit für die Position Ausbildung Fachinformatiker (m/w/d) mit Schwerpunkt Anwendungsentwicklung. Im Anhang finden Sie meine Bewerbungsunterlagen. Sollten Sie noch weitere Dokumente benötigen, geben Sie mir bitte Bescheid. <br><br>
+    Bei Fragen stehe ich gerne zur Verfügung. <br><br>
+    Ich freue mich, Sie bei einem persönlichen Gespräch kennenzulernen. <br><br>
+    Freundliche Grüße <br>
+    Islomjon Saidaliev
+  </main><br><br>
+  <footer style="padding-inline: 1vw; ">
+    <h2 style="font-size: clamp(16px, 2vw, 18px);">Kontaktdaten</h2>
+    <p style="color: #666666;">
+      Islomjon Saidaliev <br>
+      E-Mail: <a href="islomihsan@gmail.com">islomihsan@gmail.com</a> <br>
+      Telefon: +49 15153416928 <br>
+    </p>
+    <br>
+    <h2 style="font-size: clamp(16px, 2vw, 18px);">Anlagen</h2>
+    <p style="color: #666666;">
+      Anschreiben.pdf <br>
+      Lebenslauf.pdf <br>
+      Zeugnisse_Anerkennung_Islomjon_Saidaliev.pdf
+    </p>
+  </footer><br><br>
+  <footer style="padding: 25px 1vw 10px 1vw; background-color: #093968; color: white;">
+    <a target="_blank" href="https://github.com/islom2202"><img src="https://islom2202.github.io/portfolio/assets/icons/github.png" alt="" style="width: 40px;"></a>
+    <a target="_blank" href="https://www.instagram.com/islomjon_saidaliev"><img src="https://islom2202.github.io/portfolio/assets/icons/instagram.png" alt="" style="width: 40px;"></a>
+    <a target="_blank" href="https://wa.me/+4915153416928"><img src="https://img.icons8.com/?size=128&id=CVI48dqUAQYO&format=png" alt="" style="width: 40px;"></a>
+    <p style="color: #737373; font-size: clamp(14px, 4vw, 16px);">Islomjon Saidaliev</p>
+  </footer>
+</body>
+<script>
+  let name = document.querySelector('.name');
+  let adjEnd = document.querySelector(".adjEnd")
+  let input = document.querySelector("input");
+  input.oninput = (e) => {
+    let t = e.target.value
+    name.textContent = t
+    t.toLowerCase().includes("herr") ? adjEnd.textContent = "r" : adjEnd.textContent = ""
+  }
+</script>
+</html>

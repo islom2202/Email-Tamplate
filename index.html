@@ -7,18 +7,22 @@
 </head>
 <body style="margin: 0; font-family:Lato, Helvetica, Arial, sans-serif; line-height: 170%;">
   <input placeholder="Full Name" style="margin: 20px;"/>
+  <select>
+    <option value="Anwendungsentwicklung">Anwendungsentwicklung</option>
+    <option value="Systemintegration">Systemintegration</option>
+  </select>
   <button>Copy</button>
   <br><br><br><br>
   <div class="template">
     <header style="padding-inline: 1vw;">
     
-    <p style="font-size: clamp(16px, 2vw, 18px); font-weight: 600; padding-top: 10px;">Bewerbung als Ausbildung Fachinformatiker (m/w/d) mit Schwerpunkt Anwendungsentwicklung</p>
+    <p style="font-size: clamp(16px, 2vw, 18px); font-weight: 600; padding-top: 10px;">Bewerbung als Ausbildung Fachinformatiker (m/w/d) mit Schwerpunkt <span class="schwerpunkt">Anwendungsentwicklung</span></p>
 
     <div style="width: 25vw; height: 3px; background-color: #093968; border-radius: 50px; margin: 15px 0 40px 0;"></div>
   </header>
   <main style="color:#666666; font-size:16px; padding-inline: 1vw; ">
     Sehr geehrte<span class="adjEnd"></span> <span class="name">Damen und Herren</span>, <br><br>
-    ich bewerbe mich hiermit für die Position Ausbildung Fachinformatiker (m/w/d) mit Schwerpunkt Anwendungsentwicklung. Im Anhang finden Sie meine Bewerbungsunterlagen. Sollten Sie noch weitere Dokumente benötigen, geben Sie mir bitte Bescheid. <br><br>
+    ich bewerbe mich hiermit für die Position Ausbildung Fachinformatiker (m/w/d) mit Schwerpunkt <span class="schwerpunkt">Anwendungsentwicklung</span>. Im Anhang finden Sie meine Bewerbungsunterlagen. Sollten Sie noch weitere Dokumente benötigen, geben Sie mir bitte Bescheid. <br><br>
     Bei Fragen stehe ich gerne zur Verfügung. <br><br>
     Ich freue mich, Sie bei einem persönlichen Gespräch kennenzulernen. <br><br>
     Freundliche Grüße <br>
@@ -57,7 +61,14 @@
     name.textContent = t
     t.toLowerCase().includes("herr") ? adjEnd.textContent = "r" : adjEnd.textContent = ""
   }
-
+  // Schwerpunkt selection
+  const selection = document.querySelector("select")
+  selection.onchange = () =>{
+    let schwerpunkts = document.querySelectorAll(".schwerpunkt")
+    schwerpunkts.forEach(punkt => {
+      punkt.innerText = selection.value
+    })
+  }
  // Copy template
  let copyBtn = document.querySelector("button");
  copyBtn.onclick = () => copyTemplate()

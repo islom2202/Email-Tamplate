@@ -64,10 +64,13 @@
  let copyTemplate = async () => {
     let template = document.querySelector(".template")
     try {
-      // await navigator.clipboard.writeText(template);
-      const blob = new Blob([template.innerHTML], {type: "text/html"});
-      const item = new ClipboardItem({"text/html": blob});
-      await navigator.clipboard.write([item])
+      // This part has to be learned
+      const range = document.createRange();
+      range.selectNode(template);
+      window.getSelection().removeAllRanges();
+      window.getSelection().addRange(range);
+      document.execCommand("copy");
+      window.getSelection().removeAllRanges();
       copyBtn.innerText = "Copied"
       setTimeout(()=>{
         copyBtn.innerText = "Copy"

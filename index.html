@@ -7,7 +7,7 @@
 </head>
 <body style="margin: 0; padding: 0; box-sizing: border-box;">
   <div>
-    <input placeholder="Full Name" style="margin: 20px;"/>
+    <input class="input" placeholder="Full Name" style="margin: 20px;"/>
   <select>
     <option value="Anwendungsentwicklung">Anwendungsentwicklung</option>
     <option value="Systemintegration">Systemintegration</option>
@@ -19,6 +19,7 @@
     <option value="Anlagenmechaniker">Anlagenmechaniker</option>
     <option value="Fachlagerist/in">Fachlagerist/in</option>
   </select>
+  <input class="customSelect" type="text" placeholder="custom profession">
   <button>Copy</button>
   </div>
   <br><br>
@@ -70,27 +71,42 @@
   // Add the name of Abteilungsleiter
   let name = document.querySelector('.name');
   let adjEnd = document.querySelector(".adjEnd")
-  let input = document.querySelector("input");
+  let input = document.querySelector(".input");
   input.oninput = (e) => {
     let t = e.target.value
     name.textContent = t
     t.toLowerCase().includes("herr") ? adjEnd.textContent = "r" : adjEnd.textContent = ""
   }
-  // Schwerpunkt selection
-  const selection = document.querySelector("select")
-  const portfolio = document.querySelector(".portfolio")
-  selection.onchange = () =>{
-    if(selection.value != "Anwendungsentwicklung" && selection.value != "Systemintegration"){
+  // hide or show portfolio link in contact daten
+  function manageLink(selected){
+    const portfolio = document.querySelector(".portfolio")
+     if(selected != "Anwendungsentwicklung" && selected != "Systemintegration"){
       portfolio.setAttribute("hidden", "")
     }else{
       portfolio.removeAttribute("hidden")
     }
-    let schwerpunkts = document.querySelectorAll(".schwerpunkt")
-    schwerpunkts.forEach(punkt => {
-      punkt.innerText = selection.value
-    })
   }
- // Copy template
+ // Change Schwerpunkt
+ function changeSchwerpunkt(schwerpunkt){
+  let schwerpunkts = document.querySelectorAll(".schwerpunkt")
+    schwerpunkts.forEach(punkt => {
+      punkt.innerText = schwerpunkt
+    })
+ }
+  // Schwerpunkt selection
+  const selection = document.querySelector("select")
+  selection.onchange = (e) =>{
+    manageLink(selection.value)
+    changeSchwerpunkt(selection.value)
+  }
+
+  // Custom Schwerpunkt (Input/Select)
+  let customSelect = document.querySelector(".customSelect")
+  customSelect.oninput= (e) => {
+    manageLink(e.target.value)
+    changeSchwerpunkt(e.target.value)
+  }
+  // Copy template
  let copyBtn = document.querySelector("button");
  copyBtn.onclick = () => copyTemplate()
  let copyTemplate = async () => {

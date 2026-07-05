@@ -5,38 +5,54 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
-<body style="margin: 0; padding: 0; box-sizing: border-box;">
-  <div>
-    <input class="input" placeholder="Full Name" style="margin: 20px;"/>
-  <select>
-    <option value="Anwendungsentwicklung">Anwendungsentwicklung</option>
-    <option value="Systemintegration">Systemintegration</option>
-    <option value="Fachverkäufer/in">Fachverkäufer/in</option>
-    <option value="Maler/in und Lackierer/in">Maler/in und Lackierer/in</option>
-    <option value="Elektroniker/in">Elektroniker/in</option>
-    <option value="Hörakustiker/in">Hörakustiker/in</option>
-    <option value="Mechatroniker">Mechatroniker</option>
-    <option value="Anlagenmechaniker">Anlagenmechaniker</option>
-    <option value="Fachlagerist/in">Fachlagerist/in</option>
-  </select>
-  <input class="customSelect" type="text" placeholder="custom profession">
-  <button>Copy</button>
+<body style="margin: 0; padding: 0; box-sizing: border-box; line-height: 1; font-size: clamp(13px, 3vw, 17px );">
+  <div style="padding: 40px 20px 0 0; display: grid; grid-template-columns: 3fr 3fr 3fr 3fr 1fr;">
+    <textarea class="incompanyName" type="text" placeholder="Company's name"></textarea>
+  <textarea class="inName" placeholder="Employer's name"></textarea>
+  <textarea class="incompanyAddress" placeholder="Company's address"></textarea>
+  <textarea class="customSelect" type="text" placeholder="Profession"></textarea>
+   <button>Copy</button>
   </div>
   <br><br>
 
    <!--Table-->
-  <table class="template" style="max-width: 640px; margin: 20px 0;">
+  <table class="template" style="margin: 20px 0;">
+    <!--Pre Header My Info-->
+      <tr class="myName" style="font-weight: 600; color: #093968;">
+        <td>Islomjon Saidaliev</td>
+      </tr>
+      <tr>
+        <td>Deweerthstraße 118, <br>
+          42107 Wuppertal
+        </td>
+      </tr>
+      <tr>
+        <td>Telefon: +4915153416928</td>
+      </tr>
+      <tr>
+        <td>E-Mail: islomihsan@gmail.com</td>
+      </td>
+      </tr>
+      <!--Pre Header Company's Info-->
+      <tr style="font-weight: 600; color: #093968;">
+        <td class="companyName" style="padding-top: 30px;">Company's name</td>
+      </tr>
+      <tr>
+        <td class="name">Employer's name</td>
+      </tr>
+      <tr>
+        <td class="companyAddress">Company's address</td>
+      </tr>
   <!--Header-->
   <tr>
-    <th style="font-size: 17px; text-align: left; font-family: Verdana;">
+    <th style="font-size: 18px; text-align: left; padding-top: 60px; padding-bottom: 30px;">
       Bewerbung um eine Ausbildung im Beruf:
       <span class="schwerpunkt">Anwendungsentwicklung</span>
-      <div style="max-width: 40%; height: 3px; background-color: #093968; border-radius: 50px; margin-top: 20px;"></div>
     </th>
   </tr>
   <!--Body-->
   <tr>
-    <td style="font-size: 15px; color: #666666; padding-top: 40px; font-family: Verdana;">
+    <td style="font-size: 15px; color: #666666;">
       Sehr geehrte<span class="adjEnd"></span> <span class="name">Damen und Herren</span>, <br><br>
       ich bewerbe mich hiermit für die Position: Ausbildung - <span class="schwerpunkt">Anwendungsentwicklung</span>. <br><br>
       Im Anhang finden Sie meine Bewerbungsunterlagen. Sollten Sie noch weitere Dokumente benötigen, geben Sie mir bitte Bescheid. <br><br>
@@ -48,10 +64,10 @@
   </tr>
   <!--Footer-->
   <tr>
-    <th style="text-align: left; padding: 30px 0 15px; font-size: 16px; font-family: Verdana;">Kontaktdaten</th>
+    <th style="text-align: left; padding: 30px 0 15px; font-size: 16px;">Kontaktdaten</th>
   </tr>
   <tr>
-    <td style="color: #666666; font-size: 15px; font-family: Verdana;">
+    <td style="color: #666666; font-size: 15px;">
       <span class="portfolio">
         👨‍💻 Portfolio: <a href="https://islom2202.github.io/portfolio/" style="color: black;">↗ Portfolio</a> <br>
       </span>
@@ -68,19 +84,40 @@
  
 </body>
 <script>
-  // Add the name of Abteilungsleiter
-  let name = document.querySelector('.name');
-  let adjEnd = document.querySelector(".adjEnd")
-  let input = document.querySelector(".input");
-  input.oninput = (e) => {
-    let t = e.target.value
-    name.textContent = t
-    t.toLowerCase().includes("herr") ? adjEnd.textContent = "r" : adjEnd.textContent = ""
+  // Add the name of Employer
+  let inName = document.querySelector(".inName");
+  inName.oninput = (e) => {
+    let names = document.querySelectorAll('.name');
+    names.forEach(employerName => {
+      addName(employerName, e.target.value)
+    })
+    defineAdjEnd(e.target.value)
+  }
+  
+  // Add the name of Company
+  let incompanyName = document.querySelector('.incompanyName')
+  incompanyName.oninput = (e) => {
+    let companyName = document.querySelector('.companyName');
+    addName(companyName, e.target.value)
+  }
+  
+  // Add the address of Company
+  let incompanyAddress = document.querySelector(".incompanyAddress")
+  incompanyAddress.oninput = (e) => {
+    let companyAddress = document.querySelector(".companyAddress")
+    addName(companyAddress, e.target.value)
+  }
+  function addName(tag, value){
+    tag.innerText = value
+  }
+  function defineAdjEnd(name){
+    let adjEnd = document.querySelector(".adjEnd")
+    name.toLowerCase().includes("herr") ? adjEnd.textContent = "r" : adjEnd.textContent = ""
   }
   // hide or show portfolio link in contact daten
-  function manageLink(selected){
+  function manageLink(schwerpunkt){
     const portfolio = document.querySelector(".portfolio")
-     if(selected != "Anwendungsentwicklung" && selected != "Systemintegration"){
+     if(schwerpunkt != "Anwendungsentwicklung" && schwerpunkt != "Systemintegration"){
       portfolio.setAttribute("hidden", "")
     }else{
       portfolio.removeAttribute("hidden")
@@ -93,12 +130,6 @@
       punkt.innerText = schwerpunkt
     })
  }
-  // Schwerpunkt selection
-  const selection = document.querySelector("select")
-  selection.onchange = (e) =>{
-    manageLink(selection.value)
-    changeSchwerpunkt(selection.value)
-  }
 
   // Custom Schwerpunkt (Input/Select)
   let customSelect = document.querySelector(".customSelect")

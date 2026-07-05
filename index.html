@@ -54,12 +54,13 @@
   <tr>
     <td style="font-size: 15px; color: #666666;">
       Sehr geehrte<span class="adjEnd"></span> <span class="name">Damen und Herren</span>, <br><br>
-      ich bewerbe mich hiermit für die Position: <span class="schwerpunkt">Elektroniker/in - Energie- und Gebäudetechnik</span>. <br><br>
+      ich bewerbe mich hiermit für die Position: <span class="schwerpunkt">Elektroniker/in Energie- und Gebäudetechnik</span>. <br><br>
       Ich bringe mit: 
       <ul>
         <li>Zuverlässigkeit</li>
         <li>Pünktlichkeit</li>
         <li>Lernbereitschaft und Motivation, neue Fähigkeiten zu erwerben</li>
+        <li class="matheInteresse">Großes Interesse an Elektrotechnik sowie die Bereitschaft, Mathematik und Physik weiter zu vertiefen</li>
       </ul>
       <br>
 
@@ -122,6 +123,18 @@
     let adjEnd = document.querySelector(".adjEnd")
     name.toLowerCase().includes("herr") ? adjEnd.textContent = "r" : adjEnd.textContent = ""
   }
+  
+  // Hide Mathe & Physik Interesse - List Item
+  function hideItem(){
+    let schwerpunkt = document.querySelector(".schwerpunkt")
+    let mathInterest = document.querySelector(".matheInteresse")
+    if(schwerpunkt.innerText != "Elektroniker/in Energie- und Gebäudetechnik"){
+      mathInterest.setAttribute("hidden", "")
+    }else{
+      mathInterest.removeAttribute("hidden")
+    }
+  }
+  
   // hide or show portfolio link in contact daten
   function manageLink(schwerpunkt){
     const portfolio = document.querySelector(".portfolio")
@@ -141,9 +154,10 @@
 
   // Custom Schwerpunkt (Input/Select)
   let customSelect = document.querySelector(".customSelect")
-  customSelect.oninput= (e) => {
+  customSelect.oninput = (e) => {
     manageLink(e.target.value)
     changeSchwerpunkt(e.target.value)
+    hideItem()
   }
   // Copy template
  let copyBtn = document.querySelector("button");

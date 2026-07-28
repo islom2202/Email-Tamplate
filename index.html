@@ -59,8 +59,7 @@
       <ul>
         <li>Mittlere Reife</li>
         <li>Sehr gute Deutschkenntnisse</li>
-        <li>Interesse am Handwerk</li>
-        <li class="matheInteresse">Großes Interesse sowie die Bereitschaft, Mathematik und Physik selbständig tief zu lernen</li>
+        <li>Großes Interesse, Mathematik selbständig tief zu lernen</li>
       </ul>
       <br>
 
@@ -124,16 +123,6 @@
     name.toLowerCase().includes("herr") ? adjEnd.textContent = "r" : adjEnd.textContent = ""
   }
   
-  // Hide Mathe & Physik Interesse - List Item
-  function hideItem(){
-    let schwerpunkt = document.querySelector(".schwerpunkt")
-    let mathInterest = document.querySelector(".matheInteresse")
-    if(schwerpunkt.innerText != "Elektroniker/in Energie- und Gebäudetechnik"){
-      mathInterest.setAttribute("hidden", "")
-    }else{
-      mathInterest.removeAttribute("hidden")
-    }
-  }
   
   // hide or show portfolio link in contact daten
   function manageLink(schwerpunkt){
